@@ -1,0 +1,133 @@
+.camisa-area {
+    display: flex;
+    justify-content: space-around;
+}
+
+.camisa-item{
+    text-align: center;
+}
+.janela {
+    height: 80%;
+    width: 75%;
+    display: none;
+    position: fixed;
+    border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+.fechar{
+    cursor: pointer;
+}
+.camisaInfo--sizes {
+    display:inline-flex;
+    border-radius:10px;
+    overflow:hidden;
+}
+.camisaInfo--size{
+    padding:10px 15px;
+    color:#000;
+    background-color:#EEE;
+    font-size:13px;
+    font-weight: bold;
+    cursor:pointer;
+}
+.camisaInfo--size:hover {
+    background-color:#CCC;
+}
+.selected {
+    background-color:#d32f2f;
+    color:#FFF;
+}
+.camisaInfo--qtarea {
+    display:inline-flex;
+    background-color:#EEE;
+    border-radius:10px;
+    height:30px;
+}
+
+.camisaInfo--qtarea button {
+    border:0;
+    background-color:transparent;
+    font-size:17px;
+    outline:0;
+    cursor:pointer;
+    padding:0px 10px;
+    color:#333;
+}
+
+.camisaInfo--qt {
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 5px;
+    color:#000;
+}
+
+.camisaInfo--addButton {
+    margin-top:30px;
+    padding:20px 30px;
+    border-radius:20px;
+    background-color:#d32f2f;
+    color:#FFF;
+    display:inline-block;
+    cursor:pointer;
+    margin-right:30px;
+}
+
+aside {
+    background-color:#6c757d;
+    width:0vw;
+    font-family:'Hepta Slab', Helvetica, Arial;
+    transition:all ease 1s;
+    overflow-x:hidden;
+}
+
+aside.show {
+    width:30vw;
+}
+
+.cart--item {
+    display:flex;
+    align-items:center;
+    margin:10px 0;
+}
+
+.cart--item img {
+    width:40px;
+    height:40px;
+    margin-right:20px;
+}
+
+.cart--item-nome {
+    flex:1;
+}
+
+.cart--item--qtarea {
+    display:inline-flex;
+    background-color:#EEE;
+    border-radius:10px;
+    height:30px;
+}
+
+.cart--item--qtarea button {
+    border:0;
+    background-color:transparent;
+    font-size:17px;
+    outline:0;
+    cursor:pointer;
+    padding:0px 10px;
+    color:#333;
+}
+
+.cart--item--qt {
+    line-height: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 0px 5px;
+    color:#000;
+}
