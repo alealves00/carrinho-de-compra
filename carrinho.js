@@ -31,7 +31,7 @@ const json = [
  ];
    
    //Inicializa um array vazio para armazenar os itens do carrinho
-
+   let quantCamisa = 1;
    let cart = [];
  
    //Funções para selecionar elementos do DOM
@@ -80,18 +80,19 @@ const json = [
  seleciona('.fechar').addEventListener('click', ocultarJanela);
  
  function mostrarJanela() {
-  document.querySelector('.janela ').style.display = 'block'; // Exibe a janela flutuante
+  seleciona('.janela ').style.display = 'block'; // Exibe a janela flutuante
  }
  
  function ocultarJanela() {
-  document.querySelector('.janela').style.display = 'none'; // Oculta a janela flutuante
+  seleciona('.janela').style.display = 'none'; // Oculta a janela flutuante
  }
 
  //Função para obter a chave do item clicado
  
+ 
  const pegarKey = (e) => {
   let key = e.target.closest('.camisa-item').getAttribute('data-key'); // identifica qual é a camisa q foi clicada
-  quantCamisa = 1; 
+  quantCamisa = 1
   modalKey = key
   return key;
  }
@@ -114,43 +115,29 @@ const json = [
 
  // Função para alterar a quantidade de itens no modal
  
-//  const mudarQuantidade = () => {
-//     const qtMais = seleciona('.camisaInfo--qtmais');
-//     const qtMenos = seleciona('.camisaInfo--qtmenos');
+ const mudarQuantidade = () => {
+    const qtMais = seleciona('.camisaInfo--qtmais');
+    const qtMenos = seleciona('.camisaInfo--qtmenos');
 
-//     // Verifica se os event listeners já foram adicionados
-//     if (!qtMais.dataset.listenerAdded) {
-//         qtMais.addEventListener('click', () => {
-//             quantCamisa++;
-//             seleciona('.camisaInfo--qt').innerHTML = quantCamisa;
-//             // Atualiza a quantidade no carrinho aqui, se necessário
-//         });
-//         qtMais.dataset.listenerAdded = true;
-//     }
-//     if (!qtMenos.dataset.listenerAdded) {
-//         qtMenos.addEventListener('click', () => {
-//             if(quantCamisa > 1) {
-//                 quantCamisa--;
-//                 seleciona('.camisaInfo--qt').innerHTML = quantCamisa;
-//                 // Atualiza a quantidade no carrinho aqui, se necessário
-//             }
-//         });
-//         qtMenos.dataset.listenerAdded = true;
-//     }
-// }
-
-const mudarQuantidade = () => {
-    let quantCamisa = 1; // sem isso da um erro de duplicagem 
-    seleciona('.camisaInfo--qtmais').addEventListener('click', () => {
-        quantCamisa++
-        seleciona('.camisaInfo--qt').innerHTML = quantCamisa
-    })
-    seleciona('.camisaInfo--qtmenos').addEventListener('click', () => {
-        if(quantCamisa > 1) {
-            quantCamisa--
-            seleciona('.camisaInfo--qt').innerHTML = quantCamisa	
-        }
-    })
+    // Verifica se os event listeners já foram adicionados
+    if (!qtMais.dataset.listenerAdded) {
+        qtMais.addEventListener('click', () => {
+            quantCamisa++;
+            seleciona('.camisaInfo--qt').innerHTML = quantCamisa;
+            // Atualiza a quantidade no carrinho aqui, se necessário
+        });
+        qtMais.dataset.listenerAdded = true;
+    }
+    if (!qtMenos.dataset.listenerAdded) {
+        qtMenos.addEventListener('click', () => {
+            if(quantCamisa > 1) {
+                quantCamisa--;
+                seleciona('.camisaInfo--qt').innerHTML = quantCamisa;
+                // Atualiza a quantidade no carrinho aqui, se necessário
+            }
+        });
+        qtMenos.dataset.listenerAdded = true;
+    }
 }
 
 // funçoes para abrir o carrinho
@@ -158,6 +145,7 @@ const mudarQuantidade = () => {
  const adicionarNoCarrinho = () => {
     seleciona('.camisaInfo--addButton').addEventListener('click', () => {
     let size = seleciona('.camisaInfo--size.selected').getAttribute('data-key')
+    console.log("Quant. " + quantCamisa)
     let price = seleciona('.camisaInfo--actualPrice').innerHTML.replace(/[^0-9.]/g, '');
     let identificador = json[modalKey].id+'t'+size
     let key = cart.findIndex( (itemm) => itemm.identificador === identificador )
@@ -172,6 +160,7 @@ const mudarQuantidade = () => {
             price: parseFloat(price)
         }
         cart.push(camisa)
+        console.log(camisa)
     }
    
     mostrarCart();
@@ -251,4 +240,3 @@ const finalizarCompra = () => {
    mudarQuantidade()
    atualizarCarrinho()
    finalizarCompra()
-   fecharCarrinho()
